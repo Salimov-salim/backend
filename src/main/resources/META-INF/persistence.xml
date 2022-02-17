@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.registry_internalRegistration_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.registry.entity.Sources</class>
+    <class>com.registry.entity.Additionalinformation</class>
+    <class>com.registry.entity.Universities</class>
+    <class>com.registry.entity.Person</class>
+    <class>com.registry.entity.Personsocialnetworks</class>
+    <class>com.registry.entity.Relation</class>
+    <class>com.registry.entity.Educationtype</class>
+    <class>com.registry.entity.WorkExperience</class>
+    <class>com.registry.entity.Relationtypes</class>
+    <class>com.registry.entity.NumberTags</class>
+    <class>com.registry.entity.PersonEducation</class>
+    <class>com.registry.entity.Relationadditionalinfo</class>
+    <class>com.registry.entity.PersonAnnouncement</class>
+    <class>com.registry.entity.Cv</class>
+    <class>com.registry.entity.Socialtypes</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/salim_db"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="6142"/>
+    </properties>
+  </persistence-unit>
+</persistence>

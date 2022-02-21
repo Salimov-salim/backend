@@ -24,29 +24,29 @@ public class InternalRegistrationApplication {
 
 
 
-    @Autowired
-	private PersonEducationService service;
+//    @Autowired
+//	private PersonEducationService service;
 
-	@Bean
-	public CommandLineRunner run() {
-		CommandLineRunner clr = new CommandLineRunner(){
-
-			@Override
-			public void run(String... args) throws Exception {
-
-                ResponseDTO rs=service.getById(1);
-                System.out.println(rs.getObj());
-//                PersonAnnouncement p=service.getById(1);
-//                System.out.println(p.getFullname());
-//				List<Person> list= service.getAll();
-//                for (Person l :
-//                        list) {
-//                    System.out.println(l.getFathername());
-//                }
-//				System.out.println("list size="+list.size());
-			}
-		};
-
-		return clr;
-	}
+//	@Bean
+//	public CommandLineRunner run() {
+//		CommandLineRunner clr = new CommandLineRunner(){
+//
+//			@Override
+//			public void run(String... args) throws Exception {
+//
+//                ResponseDTO rs=service.getById(1);
+//                System.out.println(rs.getObj());
+////                PersonAnnouncement p=service.getById(1);
+////                System.out.println(p.getFullname());
+////				List<Person> list= service.getAll();
+////                for (Person l :
+////                        list) {
+////                    System.out.println(l.getFathername());
+////                }
+////				System.out.println("list size="+list.size());
+//			}
+//		};
+//
+//		return clr;
+//	}
 }

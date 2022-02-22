@@ -17,8 +17,13 @@ public class PersonRestController {
     @Autowired
     private PersonService personService;
 
+//    @GetMapping("/persons")
+//    public ResponseDTO getAll(){
+//        return personService.getAll();
+//    }
+
     @GetMapping("/persons")
-    public ResponseDTO getAll(){
+    public List<Person> getAll(){
         return personService.getAll();
     }
 //

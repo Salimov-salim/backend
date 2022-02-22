@@ -7,6 +7,8 @@ import com.registry.entity.Person;
 import com.registry.repository.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
     private final PersonRepository personRepository;
@@ -30,9 +32,9 @@ public class PersonService {
         this.personSocialNetworksService = personSocialNetworksService;
     }
 
-    public ResponseDTO getAll(){
+    public List<Person> getAll(){
         try {
-            return ResponseDTO.of(personRepository.findAll());
+            return personRepository.findAll();
         }catch (Exception e){
             e.printStackTrace();
             System.out.println(e);

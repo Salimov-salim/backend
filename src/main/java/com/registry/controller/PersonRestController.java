@@ -74,7 +74,6 @@ public class PersonRestController {
        return personService.getPersonByNameAndSurname(name,surname);
     }
 
-
     @RequestMapping({ "/hello" })
     public String firstPage() {
         return "Hello World";

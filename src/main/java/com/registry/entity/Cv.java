@@ -32,9 +32,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "cv",schema = "general")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cv.findAll", query = "SELECT c FROM Cv c")
-    , @NamedQuery(name = "Cv.findById", query = "SELECT c FROM Cv c WHERE c.id = :id")
-    , @NamedQuery(name = "Cv.findByInsertdate", query = "SELECT c FROM Cv c WHERE c.insertdate = :insertdate")})
+        @NamedQuery(name = "Cv.findAll", query = "SELECT c FROM Cv c")
+        , @NamedQuery(name = "Cv.findById", query = "SELECT c FROM Cv c WHERE c.id = :id")
+        , @NamedQuery(name = "Cv.findByInsertdate", query = "SELECT c FROM Cv c WHERE c.insertdate = :insertdate")})
 public class Cv implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -89,5 +89,5 @@ public class Cv implements Serializable {
     public String toString() {
         return "com.registry.entity.Cv[ id=" + id + " ]";
     }
-    
+
 }

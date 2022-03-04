@@ -5,7 +5,6 @@
     <class>com.registry.entity.Sources</class>
     <class>com.registry.entity.Additionalinformation</class>
     <class>com.registry.entity.Universities</class>
-    <class>com.registry.entity.Person</class>
     <class>com.registry.entity.Personsocialnetworks</class>
     <class>com.registry.entity.Relation</class>
     <class>com.registry.entity.Educationtype</class>
@@ -17,6 +16,7 @@
     <class>com.registry.entity.PersonAnnouncement</class>
     <class>com.registry.entity.Cv</class>
     <class>com.registry.entity.Socialtypes</class>
+    <class>com.registry.entity.Person</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/salim_db"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

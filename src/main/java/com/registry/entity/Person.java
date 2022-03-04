@@ -71,6 +71,8 @@ public class Person implements Serializable {
     private String fin;
     @Column(name = "email")
     private String email;
+    @Column(name = "address")
+    private String address;
     @OneToMany(mappedBy = "idperson")
     private Collection<PersonEducation> personEducationCollection;
     @OneToMany(mappedBy = "idperson")
@@ -176,7 +178,13 @@ public class Person implements Serializable {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
 
 
@@ -196,5 +204,5 @@ public class Person implements Serializable {
     public String toString() {
         return "com.registry.entity.Person[ id=" + id + " ]";
     }
-    
+
 }

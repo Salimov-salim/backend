@@ -1,8 +1,10 @@
 package com.registry.controller;
 
+import com.registry.entity.Educationtype;
 import com.registry.entity.Person;
 import com.registry.entity.Socialtypes;
 import com.registry.entity.Universities;
+import com.registry.service.EducationTypesService;
 import com.registry.service.SocialTypesService;
 import com.registry.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class UniversitiesRestController {
     @Autowired
     public SocialTypesService socialTypesService;
 
+    @Autowired
+    public EducationTypesService educationTypesService;
+
     @GetMapping("/universities")
     public List<Universities> getAll(){
         return universityService.getAll();
@@ -29,4 +34,8 @@ public class UniversitiesRestController {
     public List<Socialtypes> getAllSocialPages(){
         return socialTypesService.getAll();
     }
+
+
+    @GetMapping("/educationTypes")
+    public List<Educationtype> getEducationTypes(){return educationTypesService.getAll(); }
 }

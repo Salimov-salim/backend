@@ -2,11 +2,13 @@ package com.registry.service;
 
 import com.registry.dto.ObjectsForm;
 import com.registry.dto.ResponseDTO;
+import com.registry.dto.ResponseData;
 import com.registry.entity.Cv;
 import com.registry.entity.Person;
 import com.registry.repository.*;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -62,20 +64,77 @@ public class PersonService {
 
     }
 
-    public boolean savePerson(ObjectsForm objectsForm){
+    public boolean savePerson(ResponseData objectsForm){
         try {
-            Cv cv=cvRepository.save(objectsForm.getCv());
-            objectsForm.getPerson().setIdcv(cv);
-            Person person=personRepository.save(objectsForm.getPerson());
-            objectsForm.getPersonsocialnetworks().setIdperson(person);
-            personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
-            objectsForm.getAdditionalinformation().setIdperson(person);
-            additionalInfoService.saveAdditionalInformation(objectsForm.getAdditionalinformation());
-            objectsForm.getPersonsocialnetworks().setIdperson(person);
-            personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
-            objectsForm.getPersonEducation().setIdperson(person);
-            personEducationService.savePersonEducation(objectsForm.getPersonEducation());
-            return true;
+            System.out.println(objectsForm.getCv().getId());
+            System.out.println(objectsForm.getCv().getContent());
+            if (objectsForm.getCv() !=null){
+                objectsForm.getCv().setInsertdate(new Timestamp(System.currentTimeMillis()));
+                Cv cv=cvRepository.saveAndFlush(objectsForm.getCv());
+                System.out.println(cv.getId());
+            }
+
+
+//            System.out.println(objectsForm.getPerson().getName());
+//            System.out.println(objectsForm.getPerson().getId());
+//            System.out.println(objectsForm.getPersonEducation2().getEnddate());
+
+
+//            if (objectsForm.getCv() !=null){
+//                objectsForm.getCv().setInsertdate(new Timestamp(System.currentTimeMillis()));
+//                Cv cv=cvRepository.saveAndFlush(objectsForm.getCv());
+//                objectsForm.getPerson().setIdcv(cv);
+//            }
+//            Person person=personRepository.saveAndFlush(objectsForm.getPerson());
+//
+//            if(objectsForm.getPersonsocialnetworks()!=null) {
+//                objectsForm.getPersonsocialnetworks().setInsertdate(new Timestamp(System.currentTimeMillis()));
+//                objectsForm.getPersonsocialnetworks().setIdperson(person);
+//                personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
+//            }
+//            if(objectsForm.getPersonsocialnetworks2()!=null) {
+//                objectsForm.getPersonsocialnetworks2().setInsertdate(new Timestamp(System.currentTimeMillis()));
+//                objectsForm.getPersonsocialnetworks2().setIdperson(person);
+//                personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks2());
+//            }
+//            if(objectsForm.getAdditionalinformation()!=null){
+//                objectsForm.getAdditionalinformation().setIdperson(person);
+//                additionalInfoService.saveAdditionalInformation(objectsForm.getAdditionalinformation());
+//            }
+//            if(objectsForm.getWorkExperience()!=null) {
+//                objectsForm.getWorkExperience().setIdperson(person);
+//                workExperienceService.savePersonWorkExperience(objectsForm.getWorkExperience());
+//            }
+//            if(objectsForm.getWorkExperience2()!=null) {
+//                objectsForm.getWorkExperience2().setIdperson(person);
+//                workExperienceService.savePersonWorkExperience(objectsForm.getWorkExperience2());
+//            }
+////            It is for education
+//            if(objectsForm.getPersonEducation()!=null) {
+//                objectsForm.getPersonEducation().setIdperson(person);
+//                personEducationService.savePersonEducation(objectsForm.getPersonEducation());
+//            }
+//            if(objectsForm.getPersonEducation2()!=null) {
+//                objectsForm.getPersonEducation2().setIdperson(person);
+//                personEducationService.savePersonEducation(objectsForm.getPersonEducation2());
+//            }
+//            return true;
+
+
+
+//            ----------------------------------------------
+//            Cv cv=cvRepository.save(objectsForm.getCv());
+//            objectsForm.getPerson().setIdcv(cv);
+//            Person person=personRepository.save(objectsForm.getPerson());
+//            objectsForm.getPersonsocialnetworks().setIdperson(person);
+//            personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
+//            objectsForm.getAdditionalinformation().setIdperson(person);
+//            additionalInfoService.saveAdditionalInformation(objectsForm.getAdditionalinformation());
+//            objectsForm.getPersonsocialnetworks().setIdperson(person);
+//            personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
+//            objectsForm.getPersonEducation().setIdperson(person);
+//            personEducationService.savePersonEducation(objectsForm.getPersonEducation());
+           return true;
         }catch (Exception e){
             e.printStackTrace();
             return false;

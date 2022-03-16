@@ -65,7 +65,7 @@ public class WorkExperienceService {
         }
     }
 
-    public ResponseDTO savePersonEducation(WorkExperience workExperience){
+    public ResponseDTO savePersonWorkExperience(WorkExperience workExperience){
         try {
             workExperienceRepository.save(workExperience);
             return ResponseDTO.of(workExperience,"successfully added");

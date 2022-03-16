@@ -56,7 +56,7 @@ public class PersonSocialNetworksService {
 
     public ResponseDTO savePersonSocialNetwork(Personsocialnetworks personsocialnetworks){
         try {
-            personSocialNetworksRepository.save(personsocialnetworks);
+            personSocialNetworksRepository.saveAndFlush(personsocialnetworks);
             return ResponseDTO.of(personsocialnetworks,"successfully added");
         }catch (Exception e){
             e.printStackTrace();

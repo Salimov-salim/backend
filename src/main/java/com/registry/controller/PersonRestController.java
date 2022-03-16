@@ -3,6 +3,7 @@ package com.registry.controller;
 
 import com.registry.dto.ObjectsForm;
 import com.registry.dto.ResponseDTO;
+import com.registry.dto.ResponseData;
 import com.registry.entity.Cv;
 import com.registry.entity.Person;
 import com.registry.service.PersonService;
@@ -55,11 +56,9 @@ public class PersonRestController {
     }
 //
     @PostMapping("/addPerson")
-    public ResponseDTO savePerson(@RequestBody ObjectsForm objectsForm){
+    public ResponseDTO savePerson(@RequestBody ResponseData objectsForm){
 
         boolean result=personService.savePerson(objectsForm);
-
-
         if (result == true){
             return ResponseDTO.of(objectsForm,"Successfully added");
         }else {
@@ -77,6 +76,13 @@ public class PersonRestController {
     @RequestMapping({ "/hello" })
     public String firstPage() {
         return "Hello World";
+    }
+
+
+    @PostMapping({"/personAdd"})
+    public Person saveSender(@RequestBody ResponseData responseData) {
+        System.out.println(responseData.toString());
+        return new Person();
     }
 
 }

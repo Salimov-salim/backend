@@ -62,7 +62,7 @@ public class AdditionalInfoService {
 
     public ResponseDTO saveAdditionalInformation(Additionalinformation additionalinformation){
         try {
-            additionalInfoRepository.save(additionalinformation);
+            additionalInfoRepository.saveAndFlush(additionalinformation);
             return ResponseDTO.of(additionalinformation,"successfully added");
         }catch (Exception e){
             e.printStackTrace();

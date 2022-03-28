@@ -66,7 +66,7 @@ public class PersonEducationService {
 
     public ResponseDTO savePersonEducation(PersonEducation personEducation){
         try {
-            personEducationRepository.save(personEducation);
+            personEducationRepository.saveAndFlush(personEducation);
             return ResponseDTO.of(personEducation,"successfully added");
         }catch (Exception e){
             e.printStackTrace();

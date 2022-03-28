@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 //    , @NamedQuery(name = "Person.findByEmail", query = "SELECT p FROM Person p WHERE p.email = :email")})
 public class Person implements Serializable {
 
+    @Column(name = "isactive")
+    private Integer isactive;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="general.person_id_seq")
@@ -175,9 +177,6 @@ public class Person implements Serializable {
     }
 
 
-
-
-
     public Cv getIdcv() {
         return idcv;
     }
@@ -186,11 +185,19 @@ public class Person implements Serializable {
         this.idcv = idcv;
     }
 
-
-
     @Override
     public String toString() {
-        return "com.registry.entity.Person[ id=" + id + " ]";
+        return "com.registry.entity.Person[ id=" + id + name+surname+" ]";
+    }
+
+
+
+    public Integer getIsactive() {
+        return isactive;
+    }
+
+    public void setIsactive(Integer isactive) {
+        this.isactive = isactive;
     }
 
 }

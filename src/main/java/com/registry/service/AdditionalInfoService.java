@@ -3,6 +3,7 @@ package com.registry.service;
 
 import com.registry.dto.ResponseDTO;
 import com.registry.entity.Additionalinformation;
+import com.registry.entity.Person;
 import com.registry.repository.AdditionalInfoRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,18 @@ public class AdditionalInfoService {
         }
     }
 
+    public Additionalinformation getAddInfoByPersonID(Person person){
+        try {
+
+            return additionalInfoRepository.getByPersonID(person);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+            return null;
+        }
+    }
+
     public ResponseDTO getById(int id){
         try {
             return  ResponseDTO.of(additionalInfoRepository.findById(id),"success");
@@ -39,7 +52,7 @@ public class AdditionalInfoService {
 
     public ResponseDTO deleteAdditionalInformationByPersonId(int id){
         try {
-            Additionalinformation additionalinformation=additionalInfoRepository.getByPersonID(id);
+            Additionalinformation additionalinformation=additionalInfoRepository.getByPersonID(new Person());
             additionalInfoRepository.delete(additionalinformation);
             return  ResponseDTO.of(additionalinformation,"successfully deleted");
         }catch (Exception e){
@@ -50,7 +63,7 @@ public class AdditionalInfoService {
 
     public ResponseDTO updateAdditionalInformation(int id,String note){
         try {
-            Additionalinformation additionalinformation=additionalInfoRepository.getByPersonID(id);
+            Additionalinformation additionalinformation=additionalInfoRepository.getByPersonID(new Person());
             additionalinformation.setNote(note);
             additionalInfoRepository.saveAndFlush(additionalinformation);
             return  ResponseDTO.of(additionalinformation,"successfully updated");

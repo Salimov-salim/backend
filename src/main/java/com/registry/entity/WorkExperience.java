@@ -35,7 +35,7 @@ public class WorkExperience implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
+
     @Column(name = "position")
     private String position;
     @Column(name = "workplace")

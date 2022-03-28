@@ -1,6 +1,7 @@
 package com.registry.repository;
 
 import com.registry.entity.Additionalinformation;
+import com.registry.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,5 +15,5 @@ public interface AdditionalInfoRepository extends JpaRepository<Additionalinform
     Additionalinformation findById(Integer integer);
 
     @Query(value="select u from Additionalinformation u where u.idperson = :idperson")
-    Additionalinformation getByPersonID(@Param("idperson") Integer idperson);
+    Additionalinformation getByPersonID(@Param("idperson") Person idperson);
 }

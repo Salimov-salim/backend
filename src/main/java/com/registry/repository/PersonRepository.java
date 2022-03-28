@@ -17,4 +17,7 @@ public interface PersonRepository extends JpaRepository<Person,String> {
 
     @Query(value="select u from Person u where u.status like :status")
     List<Person> findByStatus(@Param("status") int status);
+
+    @Query(value="select u from Person u where u.isactive=:active")
+    List<Person> findActives(@Param("active") int active);
 }

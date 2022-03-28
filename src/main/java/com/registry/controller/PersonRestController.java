@@ -51,13 +51,12 @@ public class PersonRestController {
     }
 
     @PostMapping("/updatePerson")
-    public ResponseDTO updatePerson(@RequestBody Person person){
+    public ResponseDTO updatePerson(@RequestBody ResponseData person){
         return personService.updatePerson(person);
     }
 //
     @PostMapping("/addPerson")
     public ResponseDTO savePerson(@RequestBody ResponseData objectsForm){
-
         boolean result=personService.savePerson(objectsForm);
         if (result == true){
             return ResponseDTO.of(objectsForm,"Successfully added");

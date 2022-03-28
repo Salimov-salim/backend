@@ -169,10 +169,12 @@ public class PersonService {
         }
     }
 
-    public ResponseDTO deletePerson(Person personDTO){
+    public ResponseDTO deletePerson(int personDTO){
         try {
-            Person person= personRepository.findById(personDTO.getId());
-            personRepository.delete(person);
+            System.out.println("person deleted");
+            Person person= personRepository.findById(personDTO);
+            person.setIsactive(0);
+            personRepository.saveAndFlush(person);
             return ResponseDTO.of(personDTO,"Successfully deleted");
         }catch (Exception e){
             return  ResponseDTO.of(personDTO,404,"Error happened");

@@ -45,9 +45,10 @@ public class PersonRestController {
         }
     }
 
-    @GetMapping("/deletePerson")
-    public ResponseDTO deletePerson(@RequestBody Person person){
-        return personService.deletePerson(person);
+    @GetMapping("/deletePerson/{personID}")
+    public ResponseDTO deletePerson(@PathVariable("personID") int personID){
+        System.out.println("salam");
+        return personService.deletePerson(personID);
     }
 
     @PostMapping("/updatePerson")

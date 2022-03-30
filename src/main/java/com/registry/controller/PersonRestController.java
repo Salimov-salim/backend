@@ -51,11 +51,14 @@ public class PersonRestController {
         return personService.deletePerson(personID);
     }
 
+
+
+
     @PostMapping("/updatePerson")
     public ResponseDTO updatePerson(@RequestBody ResponseData person){
         return personService.updatePerson(person);
     }
-//
+
     @PostMapping("/addPerson")
     public ResponseDTO savePerson(@RequestBody ResponseData objectsForm){
         boolean result=personService.savePerson(objectsForm);
@@ -66,23 +69,23 @@ public class PersonRestController {
         }
     }
 
-    @GetMapping("/Person")
-    public ResponseDTO getPersonNameAndSurname(@RequestParam(name="name",required = false) String name,
-                                                  @RequestParam(name="surname",required = false) String surname)
-    {
-       return personService.getPersonByNameAndSurname(name,surname);
-    }
+//    @GetMapping("/Person")
+//    public ResponseDTO getPersonNameAndSurname(@RequestParam(name="name",required = false) String name,
+//                                                  @RequestParam(name="surname",required = false) String surname)
+//    {
+//       return personService.getPersonByNameAndSurname(name,surname);
+//    }
 
-    @RequestMapping({ "/hello" })
-    public String firstPage() {
-        return "Hello World";
-    }
+//    @RequestMapping({ "/hello" })
+//    public String firstPage() {
+//        return "Hello World";
+//    }
 
 
-    @PostMapping({"/personAdd"})
-    public Person saveSender(@RequestBody ResponseData responseData) {
-        System.out.println(responseData.toString());
-        return new Person();
-    }
+//    @PostMapping({"/personAdd"})
+//    public Person saveSender(@RequestBody ResponseData responseData) {
+//        System.out.println(responseData.toString());
+//        return new Person();
+//    }
 
 }

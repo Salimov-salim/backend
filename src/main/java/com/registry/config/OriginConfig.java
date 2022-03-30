@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //            public void addCorsMappings(CorsRegistry registry) {
 //                registry.addMapping("/**")
 //                        .allowedMethods("GET","POST", "OPTIONS", "PUT", "PATCH", "DELETE")
-//                        .allowedHeaders("Access-Control-Allow-Headers", "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN")
+//                        .allowedHeaders("Access-Control-Allow-Headers", "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN,Access-Control-Allow-Origin")
 //                        .allowCredentials(true)
 //                        .allowedOrigins("http://localhost:4200");
 //            }
@@ -29,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class OriginConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/*").
+        registry.addMapping("/**").
                 allowedOrigins("http://localhost:4200").
                 allowedMethods("*").
                 allowedHeaders("*").

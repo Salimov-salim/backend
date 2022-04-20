@@ -76,9 +76,9 @@ public class PersonService {
 //            }
 
 
-            System.out.println(objectsForm.getPerson().getName());
+//            System.out.println(objectsForm.getPerson().getName());
 //            System.out.println(objectsForm.getPerson().getId());
-            System.out.println(objectsForm.getPersonEducation2().getEnddate());
+//            System.out.println(objectsForm.getPersonEducation2().getEnddate());
 
 
             if (objectsForm.getCv() !=null && objectsForm.getCv().getContent()!=null){
@@ -86,6 +86,8 @@ public class PersonService {
                 Cv cv=cvRepository.saveAndFlush(objectsForm.getCv());
                 objectsForm.getPerson().setIdcv(cv);
             }
+            objectsForm.getPerson().setIsactive(1);
+            objectsForm.getPerson().setInsertdate(new Timestamp(System.currentTimeMillis()));
             Person person=personRepository.saveAndFlush(objectsForm.getPerson());
 
             if(objectsForm.getPersonsocialnetworks()!=null && objectsForm.getPersonsocialnetworks().getName()!=null)  {

@@ -1,11 +1,8 @@
 package com.registry.service;
 
-import com.registry.dto.ObjectsForm;
 import com.registry.dto.ResponseDTO;
 import com.registry.dto.ResponseData;
-import com.registry.entity.Additionalinformation;
-import com.registry.entity.Cv;
-import com.registry.entity.Person;
+import com.registry.entity.*;
 import com.registry.repository.*;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +14,18 @@ public class PersonService {
     private final PersonRepository personRepository;
     private final WorkExperienceService workExperienceService;
     private final PersonEducationService personEducationService;
-    private final PersonAnnouncementService personAnnouncementService;
     private final AdditionalInfoService additionalInfoService;
-    private final CvService cvService;
+    private final PersonAnnouncementService personAnnouncementService;
     private final CvRepository cvRepository;
     private final PersonSocialNetworksService personSocialNetworksService;
 
 
-    public PersonService(PersonRepository personRepository, WorkExperienceService workExperienceService, PersonEducationService personEducationService, PersonAnnouncementService personAnnouncementService, AdditionalInfoService additionalInfoService, CvService cvService, CvRepository cvRepository, PersonSocialNetworksService personSocialNetworksService) {
+    public PersonService(PersonRepository personRepository, WorkExperienceService workExperienceService, PersonEducationService personEducationService, AdditionalInfoService additionalInfoService, PersonAnnouncementService personAnnouncementService, CvRepository cvRepository, PersonSocialNetworksService personSocialNetworksService) {
         this.personRepository = personRepository;
         this.workExperienceService = workExperienceService;
         this.personEducationService = personEducationService;
-        this.personAnnouncementService = personAnnouncementService;
         this.additionalInfoService = additionalInfoService;
-        this.cvService = cvService;
+        this.personAnnouncementService = personAnnouncementService;
         this.cvRepository = cvRepository;
         this.personSocialNetworksService = personSocialNetworksService;
     }
@@ -67,20 +62,6 @@ public class PersonService {
 
     public boolean savePerson(ResponseData objectsForm){
         try {
-//            System.out.println(objectsForm.getCv().getId());
-//            System.out.println(objectsForm.getCv().getContent());
-//            if (objectsForm.getCv() !=null){
-//                objectsForm.getCv().setInsertdate(new Timestamp(System.currentTimeMillis()));
-//                Cv cv=cvRepository.saveAndFlush(objectsForm.getCv());
-//                System.out.println(cv.getId());
-//            }
-
-
-//            System.out.println(objectsForm.getPerson().getName());
-//            System.out.println(objectsForm.getPerson().getId());
-//            System.out.println(objectsForm.getPersonEducation2().getEnddate());
-
-
             if (objectsForm.getCv() !=null && objectsForm.getCv().getContent()!=null){
                 objectsForm.getCv().setInsertdate(new Timestamp(System.currentTimeMillis()));
                 Cv cv=cvRepository.saveAndFlush(objectsForm.getCv());
@@ -88,6 +69,7 @@ public class PersonService {
             }
             objectsForm.getPerson().setIsactive(1);
             objectsForm.getPerson().setInsertdate(new Timestamp(System.currentTimeMillis()));
+            objectsForm.getPerson().setStatus(Boolean.TRUE);
             Person person=personRepository.saveAndFlush(objectsForm.getPerson());
 
             if(objectsForm.getPersonsocialnetworks()!=null && objectsForm.getPersonsocialnetworks().getName()!=null)  {
@@ -115,7 +97,6 @@ public class PersonService {
                 objectsForm.getWorkExperience2().setIdperson(person);
                 workExperienceService.savePersonWorkExperience(objectsForm.getWorkExperience2());
             }
-//            It is for education
             if(objectsForm.getPersonEducation()!=null && objectsForm.getPersonEducation().getIdeducationtype()!=null) {
                 objectsForm.getPersonEducation().setIdperson(person);
                 personEducationService.savePersonEducation(objectsForm.getPersonEducation());
@@ -124,23 +105,19 @@ public class PersonService {
                 objectsForm.getPersonEducation2().setIdperson(person);
                 personEducationService.savePersonEducation(objectsForm.getPersonEducation2());
             }
+            if(objectsForm.getPerson()!=null && objectsForm.getPerson().getPhonenumber()!=null) {
+                objectsForm.getPersonEducation2().setIdperson(person);
+                PersonAnnouncement personAnnouncement=new PersonAnnouncement();
+                Sources sources=new Sources();
+                sources.setId(1);
+                personAnnouncement.setIdsource(sources);
+                personAnnouncement.setFullname(objectsForm.getPerson().getName()+objectsForm.getPerson().getSurname()+objectsForm.getPerson().getFathername());
+                personAnnouncement.setPhoneNumber(objectsForm.getPerson().getPhonenumber());
+                personAnnouncement.setPersonId(person);
+                personAnnouncement.setInsertdate(new Timestamp(System.currentTimeMillis()));
+                personAnnouncementService.savePersonAnnouncement(personAnnouncement);
+            }
             return true;
-
-
-
-//            ----------------------------------------------
-//            Cv cv=cvRepository.save(objectsForm.getCv());
-//            objectsForm.getPerson().setIdcv(cv);
-//            Person person=personRepository.save(objectsForm.getPerson());
-//            objectsForm.getPersonsocialnetworks().setIdperson(person);
-//            personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
-//            objectsForm.getAdditionalinformation().setIdperson(person);
-//            additionalInfoService.saveAdditionalInformation(objectsForm.getAdditionalinformation());
-//            objectsForm.getPersonsocialnetworks().setIdperson(person);
-//            personSocialNetworksService.savePersonSocialNetwork(objectsForm.getPersonsocialnetworks());
-//            objectsForm.getPersonEducation().setIdperson(person);
-//            personEducationService.savePersonEducation(objectsForm.getPersonEducation());
-//           return true;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -182,5 +159,6 @@ public class PersonService {
             return  ResponseDTO.of(personDTO,404,"Error happened");
         }
     }
+
 
 }

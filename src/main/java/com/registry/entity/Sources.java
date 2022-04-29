@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author HP
  */
 @Entity
-@Table(name = "sources",schema = "general")
+@Table(name = "sources")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Sources.findAll", query = "SELECT s FROM Sources s")
@@ -27,8 +27,8 @@ public class Sources implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="general.sources_id_seq")
-    @SequenceGenerator(sequenceName="general.sources_id_seq",name="general.sources_id_seq",allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="sources_id_seq")
+    @SequenceGenerator(sequenceName="sources_id_seq",name="sources_id_seq",allocationSize=1)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;

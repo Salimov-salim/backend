@@ -12,6 +12,8 @@ public interface PersonAnnouncementRespository extends JpaRepository<PersonAnnou
 
     PersonAnnouncement findById(Integer s);
 
+    PersonAnnouncement findByPhoneNumber(String s);
+
     @Query(value="select u from PersonAnnouncement u where u.phoneNumber like :phoneNumber")
     PersonAnnouncement getByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 

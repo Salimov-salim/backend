@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author HP
  */
 @Entity
-@Table(name = "cv",schema = "general")
+@Table(name = "cv")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Cv.findAll", query = "SELECT c FROM Cv c")
@@ -43,6 +43,11 @@ public class Cv implements Serializable {
     private Collection<Person> personCollection;
 
     public Cv() {
+    }
+
+    public Cv(byte[] content, Date insertdate) {
+        this.content = content;
+        this.insertdate = insertdate;
     }
 
     public Cv(Integer id) {

@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author HP
  */
 @Entity
-@Table(name = "person",schema = "general")
+@Table(name = "person")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
@@ -51,7 +51,7 @@ public class Person implements Serializable {
     @Column(name = "militarystate")
     private String militarystate;
     @Column(name = "status")
-    private String status;
+    private Boolean status;
     @Column(name = "insertdate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date insertdate;
@@ -63,6 +63,8 @@ public class Person implements Serializable {
     private String email;
     @Column(name = "address")
     private String address;
+    @Column(name = "phonenumber")
+    private String phonenumber;
     @OneToMany(mappedBy = "idperson")
     private Collection<PersonEducation> personEducationCollection;
     @OneToMany(mappedBy = "idperson")
@@ -82,6 +84,14 @@ public class Person implements Serializable {
     private Collection<Additionalinformation> additionalinformationCollection;
 
     public Person() {
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public Person(Integer id) {
@@ -128,11 +138,11 @@ public class Person implements Serializable {
         this.militarystate = militarystate;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

@@ -17,6 +17,8 @@
     <class>com.registry.entity.Cv</class>
     <class>com.registry.entity.Socialtypes</class>
     <class>com.registry.entity.Person</class>
+    <class>com.registry.entity.User</class>
+    <class>com.registry.entity.UserRole</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/salim_db"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.registry</groupId>
     <artifactId>internalRegistration</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>internalRegistration</name>
     <description>internalRegistration</description>
     <properties>
@@ -42,6 +42,10 @@
             <scope>test</scope>
         </dependency>
 <!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
+        <!--        <dependency>-->
 <!--            <groupId>org.eclipse.persistence</groupId>-->
 <!--            <artifactId>eclipselink</artifactId>-->
 <!--            <version>2.5.2</version>-->
@@ -52,15 +56,15 @@
 <!--            <version>2.5.2</version>-->
 <!--            <scope>provided</scope>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt</artifactId>-->
+<!--            <version>0.9.1</version>-->
+<!--        </dependency>-->
 
 <!--        ////////////////////////-->
 

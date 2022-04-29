@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author HP
  */
 @Entity
-@Table(name = "person_announcement",schema = "general")
+@Table(name = "person_announcement")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "PersonAnnouncement.findAll", query = "SELECT p FROM PersonAnnouncement p")
@@ -29,8 +29,8 @@ public class PersonAnnouncement implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="general.person_announcement_id_seq")
-    @SequenceGenerator(sequenceName="general.person_announcement_id_seq",name="general.person_announcement_id_seq",allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="person_announcement_id_seq")
+    @SequenceGenerator(sequenceName="person_announcement_id_seq",name="person_announcement_id_seq",allocationSize=1)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;

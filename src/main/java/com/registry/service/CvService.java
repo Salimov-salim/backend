@@ -4,6 +4,12 @@ import com.registry.dto.ResponseDTO;
 import com.registry.entity.Cv;
 import com.registry.repository.CvRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.stream.Stream;
 
 @Service
 public class CvService {
@@ -14,41 +20,8 @@ public class CvService {
         this.cvRepository = cvRepository;
     }
 
-    public ResponseDTO getAllCV(){
-        try{
-            return ResponseDTO.of(cvRepository.findAll(),"success");
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseDTO.of(null,404,"error");
-        }
+    public Cv getFile(Integer id) {
+        return cvRepository.findById(id).get();
     }
 
-    public  ResponseDTO getCvById(int id){
-        try{
-            return  ResponseDTO.of(cvRepository.findById(id),"success");
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseDTO.of(null,404,"error");
-        }
-    }
-
-    public ResponseDTO saveCV(Cv cv){
-        try {
-            cvRepository.save(cv);
-            return ResponseDTO.of(cv,"successfully saved");
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseDTO.of(null,404,"error");
-        }
-    }
-
-    public ResponseDTO deleteCV(Cv cv){
-        try {
-            cvRepository.delete(cv);
-            return ResponseDTO.of(cv,"successfully deleted");
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseDTO.of(null,404,"error");
-        }
-    }
 }

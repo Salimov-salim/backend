@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author HP
  */
 @Entity
-@Table(name = "number_tags",schema = "general")
+@Table(name = "number_tags")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "NumberTags.findAll", query = "SELECT n FROM NumberTags n")
@@ -26,8 +26,8 @@ public class NumberTags implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="general.number_tags_id_seq")
-    @SequenceGenerator(sequenceName="general.number_tags_id_seq",name="general.number_tags_id_seq",allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="number_tags_id_seq")
+    @SequenceGenerator(sequenceName="number_tags_id_seq",name="number_tags_id_seq",allocationSize=1)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
